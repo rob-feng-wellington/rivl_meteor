@@ -1,5 +1,5 @@
 var MENU_KEY = 'menuOpen';
-Session.sefDefault(MENU_KEY, false);
+Session.setDefault(MENU_KEY, false);
 
 var USER_MENU_KEY = 'userMenuOpen';
 Session.setDefault(USER_MENU_KEY, false);
