@@ -1,0 +1,1 @@
+Meteor.publish('gamesList', function)

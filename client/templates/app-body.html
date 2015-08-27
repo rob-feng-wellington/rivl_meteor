@@ -1,0 +1,35 @@
+<template name="appBody">
+    <div id="container" class="">
+        <section id="menu">
+            <div class="btns-group">
+                <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
+            </div>
+            <div class="list-games">
+                <a class="js-new-list link-list-new"><span class="icon-plus"></span>New game</a>
+                {{#each games}}
+                    <a href="{{pathFor 'gameListsShow'}}" class="list-games" title="{{name}}">
+                        {{name}}
+                    </a>
+                {{/each}}
+            </div>
+        </section>
+
+        {{#unless connected}}
+        <div class="notifications">
+            <div class="notification">
+                <span class="icon-sync"></span>
+                <div class="meta">
+                    <div class="title-notification">Trying to connect</div>
+                    <div class="description">There seems to be a connection issue</div>
+                </div>
+            </div>
+        </div>
+        {{/unless}}
+
+        <div class="content-overlay"></div>
+
+        <div id="content-container">
+            {{> yield}}
+        </div>
+    </div>
+</template>
