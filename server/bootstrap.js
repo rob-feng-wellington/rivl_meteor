@@ -2,9 +2,6 @@
 Meteor.startup(function() {
 
     if(Games.find().count() === 0 || Players.find().count() === 0 || GamePlayers.find().count() === 0) {
-        Games.remove({});
-        Players.remove({});
-        GamePlayers.remove({});
         var games = [
             {
                 name: "Table tennis",
