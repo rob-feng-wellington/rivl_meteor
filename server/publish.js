@@ -2,8 +2,13 @@ Meteor.publish('gamesList', function(){
     return Games.find();
 });
 
-Meteor.publish('players', function(gameId){
+Meteor.publish('playersList', function(gameId){
     check(gameId, String);
 
-    return Players.find({gameId: gameId});
+    return GamePlayers.find({gameId: gameId})
+});
+
+Meteor.publish('players', function(playersList){
+
+    return Players.find({_id: {$in: playersList}});
 })

@@ -1,5 +1,10 @@
+// if the database is empty on server start, create some sample data.
 Meteor.startup(function() {
-    if(Games.find().count === 0) {
+
+    if(Games.find().count() === 0 || Players.find().count() === 0 || GamePlayers.find().count() === 0) {
+        Games.remove({});
+        Players.remove({});
+        GamePlayers.remove({});
         var games = [
             {
                 name: "Table tennis",
@@ -56,30 +61,39 @@ Meteor.startup(function() {
         ];
 
         var defaultScore = 1500;
+
+        var timestamp = (new Date()).getTime();
+
+        // do players first
+        _.each(players, function(player){
+            Players.insert({
+                name: player.name,
+                avatar: "",
+                createdAt: new Date(timestamp)
+            });
+            timestamp += 5;
+        });
+
+        _.each(games, function(game){
+            var game_id = Games.insert({
+                name: game.name,
+                createdAt: new Date(timestamp)
+            });
+            _.each(game.players, function(player){
+                var player = Players.find({name:player});
+                GamePlayers.insert({
+                    game_id: game_id,
+                    player_id: player._id,
+                    createdAt: new Date(timestamp),
+                    score: defaultScore
+                });
+                timestamp += 5;
+
+            });
+
+            timestamp += 5;
+        });
+
     }
 });
 
-var timestamp = (new Date()).getTime();
-// do players first
-
-_.each(players, function(player){
-    Players.insert({
-        name: player.name,
-        avatar: "",
-        createdAt: new Date(timestamp)
-    });
-    timestamp += 5;
-});
-
-_.each(games, function(game){
-    var game_id = Games.insert({
-        name: game.name,
-        createdAt: new Date(timestamp)
-    });
-    _each(game.players, function(player){
-        var player_id = Players.find({name:player});
-
-    })
-
-    timestamp += 5;
-});
