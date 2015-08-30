@@ -1,0 +1,19 @@
+<template name="gamesShow">
+    <div class="page games-show">
+        <div class="content-scrollable players-items">
+            {{#if gamesReady}}
+                {{#each games this}}
+                    game...
+                {{else}}
+                    <div class="wrapper-message">
+                        <div class="title-message">No players here</div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="wrapper-message">
+                    <div class="title-message">Loading players...</div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>

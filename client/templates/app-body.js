@@ -34,7 +34,7 @@ Template.appBody.onRendered(function() {
                 .hide()
                 .insertBefore(next)
                 .fadeIn(function() {
-                    listFadeInHold.release();
+                    playersFadeInHold.release();
                 });
         },
 
@@ -47,8 +47,8 @@ Template.appBody.onRendered(function() {
 });
 
 Template.appBody.helpers({
-    lists: function() {
-        return Lists.find();
+    games: function() {
+        return Games.find();
     },
 
     connected: function() {
