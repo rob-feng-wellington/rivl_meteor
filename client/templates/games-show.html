@@ -1,9 +1,10 @@
 <template name="gamesShow">
     <div class="page games-show">
         <div class="content-scrollable players-items">
-            {{#if gamesReady}}
-                {{#each games this}}
-                    game...
+            {{#if playerListReady}}
+                <div>all players</div>
+                {{#each players}}
+                    <div>player.....</div>
                 {{else}}
                     <div class="wrapper-message">
                         <div class="title-message">No players here</div>

@@ -1,18 +1,40 @@
 // Track if this is the first time the list template is rendered
-var firstRender = true,
-    playersRenderHold = LaunchScreen.hold();
+var firstRender = true;
+    //playersRenderHold = LaunchScreen.hold();
 
-playersFadeInHold = null;
+//playersFadeInHold = null;
 
 Template.gamesShow.onRendered(function(){
     if(firstRender) {
         // Released in app-body.js
-        playersFadeInHold = LaunchScreen.hold();
+        //playersFadeInHold = LaunchScreen.hold();
         // Handle for launch screen defined in app-body.js
-        playersRenderHold.release();
+        //playersRenderHold.release();
 
         firstRender = false;
     }
 
+    this.find('.js-title-nav')._uihooks = {
+        insertElement: function(node, next) {
+            $(node)
+                .hide()
+                .insertBefore(next)
+                .fadeIn();
+        },
+        removeElement: function(node) {
+            $(node).fadeOut(function() {
+                this.remove();
+            });
+        }
+    };
+});
 
-})
+Template.gamesShow.helpers({
+    playerListReady: function() {
+        return Router.current().playersListandle.ready();
+    },
+
+    players: function(gameId) {
+        return GamePlayers.find({gameId:gameId});
+    }
+});

@@ -21,7 +21,7 @@ Meteor.startup(function(){
     });
 
     setTimeout(function() {
-        dataReadyHold.release();
+        //dataReadyHold.release();
 
         Session.set(SHOW_CONNECTION_ISSUE_KEY, true);
     }, CONNECTION_ISSUE_TIMEOUT);
@@ -34,7 +34,7 @@ Template.appBody.onRendered(function() {
                 .hide()
                 .insertBefore(next)
                 .fadeIn(function() {
-                    playersFadeInHold.release();
+                    //playersFadeInHold.release();
                 });
         },
 
@@ -47,7 +47,11 @@ Template.appBody.onRendered(function() {
 });
 
 Template.appBody.helpers({
-    games: function() {
+    thisArray: function() {
+        return [this];
+    },
+
+    gamesList: function() {
         return Games.find();
     },
 
