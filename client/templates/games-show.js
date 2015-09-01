@@ -35,8 +35,6 @@ Template.gamesShow.helpers({
     },
 
     players: function(game) {
-        console.dir(game._id);
-        console.dir(GamePlayers.find({game_id:game._id}).fetch());
         return GamePlayers.find({game_id:game._id});
     }
 });
