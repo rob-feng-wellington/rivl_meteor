@@ -77,7 +77,7 @@ Meteor.startup(function() {
                 createdAt: new Date(timestamp)
             });
             _.each(game.players, function(player){
-                var player = Players.find({name:player});
+                var player = Players.findOne({name:player});
                 GamePlayers.insert({
                     game_id: game_id,
                     player_id: player._id,

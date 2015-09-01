@@ -2,8 +2,7 @@
     <div class="page games-show">
         <div class="content-scrollable players-items">
             {{#if playerListReady}}
-                <div>all players</div>
-                {{#each players}}
+                {{#each players this}}
                     <div>player.....</div>
                 {{else}}
                     <div class="wrapper-message">

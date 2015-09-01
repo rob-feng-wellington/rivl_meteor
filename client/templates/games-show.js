@@ -1,15 +1,15 @@
 // Track if this is the first time the list template is rendered
-var firstRender = true;
-    //playersRenderHold = LaunchScreen.hold();
+var firstRender = true,
+    playersRenderHold = LaunchScreen.hold();
 
-//playersFadeInHold = null;
+playersFadeInHold = null;
 
 Template.gamesShow.onRendered(function(){
     if(firstRender) {
         // Released in app-body.js
-        //playersFadeInHold = LaunchScreen.hold();
+        playersFadeInHold = LaunchScreen.hold();
         // Handle for launch screen defined in app-body.js
-        //playersRenderHold.release();
+        playersRenderHold.release();
 
         firstRender = false;
     }
@@ -34,7 +34,9 @@ Template.gamesShow.helpers({
         return Router.current().playersListandle.ready();
     },
 
-    players: function(gameId) {
-        return GamePlayers.find({gameId:gameId});
+    players: function(game) {
+        console.dir(game._id);
+        console.dir(GamePlayers.find({game_id:game._id}).fetch());
+        return GamePlayers.find({game_id:game._id});
     }
 });
