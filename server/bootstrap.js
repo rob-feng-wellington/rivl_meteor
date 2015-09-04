@@ -28,31 +28,31 @@ Meteor.startup(function() {
 
         var players = [
             {
-                name: "Liam"
+                name: "black leopard"
             },
             {
-                name: "Rob"
+                name: "dachshund"
             },
             {
-                name: "Jonathan"
+                name: ""
             },
             {
-                name: "Dmitri"
+                name: ""
             },
             {
-                name: "Paul"
+                name: ""
             },
             {
-                name: "Rowan"
+                name: ""
             },
             {
-                name: "Vlad"
+                name: ""
             },
             {
-                name: "Dean"
+                name: ""
             },
             {
-                name: "Dave"
+                name: ""
             }
 
         ];
