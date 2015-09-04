@@ -1,5 +1,17 @@
-Meteor.publish('games', function(){
-    return Games.find();
+Meteor.publishComposite('games', {
+    find: function() {
+        return Games.find({});
+    },
+
+    children: [
+        {
+            find: function(game) {
+                return GamePlayers.find(
+                    {game_id: game._id}
+                )
+            }
+        }
+    ]
 });
 
 Meteor.publish('game_players', function(gameId){

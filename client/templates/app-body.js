@@ -55,6 +55,11 @@ Template.appBody.helpers({
         return Games.find();
     },
 
+    gamePlayersCount : function() {
+        console.log(GamePlayers.find({game_id: this._id}).count());
+        return GamePlayers.find({game_id: this._id}).count();
+    },
+
     connected: function() {
         if (Session.get(SHOW_CONNECTION_ISSUE_KEY)) {
             return Meteor.status().connected;

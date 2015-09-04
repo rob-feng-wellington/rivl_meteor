@@ -7,9 +7,16 @@
             <div class="list-games">
                 <a class="js-new-list link-list-new"><span class="icon-plus"></span>New game</a>
                 {{#each gamesList}}
-                    <a href="{{pathFor 'gamesShow'}}" class="list-games" title="{{name}}">
-                        {{name}}
-                    </a>
+                    <ul>
+                        <a href="{{pathFor 'gamesShow'}}" class="list-games" title="{{name}}">
+                            {{name}}
+                            {{#if gamePlayersCount}}
+                                <span class="count-list">{{gamePlayersCount}}</span>
+                            {{/if}}
+
+                        </a>
+                    </ul>
+
                 {{/each}}
             </div>
         </section>
