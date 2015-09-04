@@ -2,8 +2,11 @@
     <div class="page games-show">
         <div class="content-scrollable players-items">
             {{#if playerListReady}}
-                {{#each players this}}
-                    <div>player.....</div>
+                {{#each players}}
+                    <div>{{_id}}</div>
+                    <div>{{score}}</div>
+                    <div>{{playerData.name}}</div>
+                    <div>{{playerData.avatar}}</div>
                 {{else}}
                     <div class="wrapper-message">
                         <div class="title-message">No players here</div>

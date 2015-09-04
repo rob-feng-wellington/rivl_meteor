@@ -14,7 +14,7 @@ Template.gamesShow.onRendered(function(){
         firstRender = false;
     }
 
-    this.find('.js-title-nav')._uihooks = {
+    /*this.find('.js-title-nav')._uihooks = {
         insertElement: function(node, next) {
             $(node)
                 .hide()
@@ -26,7 +26,7 @@ Template.gamesShow.onRendered(function(){
                 this.remove();
             });
         }
-    };
+    };*/
 });
 
 Template.gamesShow.helpers({
@@ -34,7 +34,11 @@ Template.gamesShow.helpers({
         return Router.current().playersListandle.ready();
     },
 
-    players: function(game) {
-        return GamePlayers.find({game_id:game._id});
+    players: function() {
+        return GamePlayers.find({game_id: this._id});
+    },
+
+    playerData: function() {
+        return Players.findOne({_id:this.player_id});
     }
 });

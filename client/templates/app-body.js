@@ -56,7 +56,6 @@ Template.appBody.helpers({
     },
 
     gamePlayersCount : function() {
-        console.log(GamePlayers.find({game_id: this._id}).count());
         return GamePlayers.find({game_id: this._id}).count();
     },
 
