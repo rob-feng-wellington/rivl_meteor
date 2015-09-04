@@ -6,53 +6,62 @@ Meteor.startup(function() {
             {
                 name: "Table tennis",
                 players: [
-                    "Rob",
-                    "Liam",
-                    "Jonathan",
-                    "Dmitri",
-                    "Paul",
-                    "Rowan",
-                    "Vlad"
+                    "cat",
+                    "dachshund",
+                    "devid",
+                    "frog",
+                    "hedgehog",
+                    "koala",
+                    "leopard"
                 ]
             },
             {
                 name: "Foosball",
                 players: [
-                    "Liam",
-                    "Dean",
-                    "Dave",
-                    "Jonathan"
+                    "owl",
+                    "panda",
+                    "cat",
+                    "koala"
                 ]
             }
         ];
 
         var players = [
             {
-                name: "black leopard"
+                name: "cat",
+                avatar: "cat.png"
             },
             {
-                name: "dachshund"
+                name: "dachshund",
+                avatar: "dachshund.png"
             },
             {
-                name: ""
+                name: "devid",
+                avatar: "devid.png"
             },
             {
-                name: ""
+                name: "frog",
+                avatar: "frog.png"
             },
             {
-                name: ""
+                name: "hedgehog",
+                avatar: "hedgehog.png"
             },
             {
-                name: ""
+                name: "koala",
+                avatar: "koala.png"
             },
             {
-                name: ""
+                name: "leopard",
+                avatar: "leopard.png"
             },
             {
-                name: ""
+                name: "owl",
+                avatar: "owl.png"
             },
             {
-                name: ""
+                name: "panda",
+                avatar: "panda.png"
             }
 
         ];
@@ -65,7 +74,7 @@ Meteor.startup(function() {
         _.each(players, function(player){
             Players.insert({
                 name: player.name,
-                avatar: "",
+                avatar: player.avatar,
                 createdAt: new Date(timestamp)
             });
             timestamp += 5;
