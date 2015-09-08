@@ -10,3 +10,7 @@ less
 iron:router
 reywood:publish-composite
 sacha:spin
+cfs:standard-packages
+cfs:gridfs
+cfs:filesystem
+twbs:bootstrap

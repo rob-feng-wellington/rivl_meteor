@@ -4,6 +4,9 @@ var firstRender = true,
 
 playersFadeInHold = null;
 
+var SHOW_ADD_PLAYER_KEY = 'showForm';
+Session.setDefault(SHOW_ADD_PLAYER_KEY, false);
+
 Template.gamesShow.onRendered(function(){
     if(firstRender) {
         // Released in app-body.js
@@ -36,5 +39,15 @@ Template.gamesShow.helpers({
 
     players: function() {
         return GamePlayers.find({game_id: Router.current().params._id});
+    },
+
+    addPlayerFormOpen: function() {
+        return Session.get(SHOW_ADD_PLAYER_KEY);
     }
 });
+
+Template.gamesShow.events({
+    'click #ShowAddNewPlayerForm': function() {
+        Session.set(SHOW_ADD_PLAYER_KEY, true);
+    }
+})

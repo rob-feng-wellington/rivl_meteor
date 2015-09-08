@@ -1,6 +1,12 @@
 <template name="gamesShow">
     <div class="page games-show">
         <div class="content-scrollable players-items">
+            {{#if addPlayerFormOpen}}
+                {{> playerAdd }}
+            {{else}}
+                <a href="#" id="ShowAddNewPlayerForm">Add a new player</a>
+            {{/if}}
+
             {{#if playerListReady}}
                 {{#each players}}
                     {{> player}}
