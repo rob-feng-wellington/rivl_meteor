@@ -35,10 +35,6 @@ Template.gamesShow.helpers({
     },
 
     players: function() {
-        return GamePlayers.find({game_id: this._id});
-    },
-
-    playerData: function() {
-        return Players.findOne({_id:this.player_id});
+        return GamePlayers.find({game_id: Router.current().params._id});
     }
 });
