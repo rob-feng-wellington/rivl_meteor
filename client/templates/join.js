@@ -1,3 +1,9 @@
+playersFadeInHold = null;
+
+Template.join.onRendered(function(){
+    playersFadeInHold = LaunchScreen.hold();
+});
+
 Template.join.onCreated(function(){
     this.data.fileObject = null;
 });

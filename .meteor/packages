@@ -13,6 +13,5 @@ sacha:spin
 cfs:standard-packages
 cfs:gridfs
 cfs:filesystem
-twbs:bootstrap
 chrismbeckett:toastr
 aldeed:collection2

@@ -43,11 +43,16 @@ Template.gamesShow.helpers({
 
     addPlayerFormOpen: function() {
         return Session.get(SHOW_ADD_PLAYER_KEY);
+    },
+
+    hasOneOrMorePlayers: function() {
+        return GamePlayers.find({game_id: Router.current().params._id}).count > 0;
     }
 });
 
 Template.gamesShow.events({
-    'click #ShowAddNewPlayerForm': function() {
+    'click .AddPlayerToGame': function(event) {
+        event.preventDefault();
         Session.set(SHOW_ADD_PLAYER_KEY, true);
     }
 })

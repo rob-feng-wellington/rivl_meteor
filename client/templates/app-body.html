@@ -8,8 +8,8 @@
                 <a class="js-new-list link-list-new"><span class="icon-plus"></span>New game</a>
                 {{#each gamesList}}
                     <ul>
-                        <a href="{{pathFor 'gamesShow'}}" class="list-games" title="{{name}}">
-                            {{name}}
+                        <a href="{{pathFor 'gamesShow'}}" class="list-games" title="{{title}}">
+                            {{title}}
                             {{#if gamePlayersCount}}
                                 <span class="count-list">{{gamePlayersCount}}</span>
                             {{/if}}

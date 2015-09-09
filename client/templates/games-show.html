@@ -1,18 +1,17 @@
 <template name="gamesShow">
     <div class="page games-show">
         <div class="content-scrollable players-items">
-            {{#if addPlayerFormOpen}}
-                {{> playerAdd }}
-            {{else}}
-                <a href="#" id="ShowAddNewPlayerForm">Add a new player</a>
-            {{/if}}
-
             {{#if playerListReady}}
+                {{#if hasOneOrMorePlayers}}
+                    <div>asasassasa</div>
+                {{/if}}
                 {{#each players}}
                     {{> player}}
                 {{else}}
                     <div class="wrapper-message">
-                        <div class="title-message">No players here</div>
+                        <div class="title-message">No players yet......</div>
+                        <a class="AddPlayerToGame" data-toggle="collapse" href="#playersCollapse" aria-expanded="false" aria-controls="playersCollapse">Add the first player</a>
+                        {{> playerCollapseArea}}
                     </div>
                 {{/each}}
             {{else}}
