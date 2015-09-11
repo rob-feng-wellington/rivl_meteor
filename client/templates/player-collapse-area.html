@@ -1,7 +1,14 @@
 <template name="playerCollapseArea">
     <div class="collapse" id="playersCollapse">
         <div class="well">
-            cccccccc
+            aaaaaaa
+            {{#each allPlayers}}
+                {{name}}
+                {{#if avatar}}
+                    <span class="url">{{avatatImage.url}}</span>
+                    <a href="{{avatatImage.url}}" target="_blank"><img src="{{avatatImage.url store='thumbs' uploading='/images/uploading.gif' storing='/images/storing.gif'}}" alt="" class="thumbnail" /></a>
+                {{/if}}
+            {{/each}}
         </div>
     </div>
 </template>

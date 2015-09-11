@@ -37,4 +37,23 @@ Meteor.publishComposite('game_players',
 
 Meteor.publish('players', function(playersList){
     return Players.find({_id: {$in: playersList}});
-})
+});
+
+Meteor.publishComposite('allPlayers', {
+    find: function() {
+        return Players.find({});
+    },
+
+    children: [
+        {
+            find: function(player) {
+                console.log(Images.find(
+                    {_id: player.avatar}
+                ).fetch());
+                return Images.find(
+                    {_id: player.avatar}
+                );
+            }
+        }
+    ]
+});
