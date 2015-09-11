@@ -11,26 +11,19 @@ Template.join.onCreated(function(){
 Template.join.events({
     'submit form': function(ev) {
 
-        var templateInstance = Template.instance(), player = {}, gamePlayer = {};
+        var templateInstance = Template.instance(), player = {};
         ev.preventDefault();
         Images.insert(templateInstance.data.fileObject, function (err, fileObj) {
             if(err) {
                 toastr.error(err.message);
             }
             else {
-                player.name = templateInstance.$('#playerName').val();
+                player.name = templateInstance.$('input[name="name"]').val();
                 player.avatar = fileObj._id;
+                console.dir(player);
 
-                Players.insert(player, function(err, playerId){
-                    if (err) {
-                        toastr.error(err.message);
-                    } else {
-                        gamePlayer.game_id = Router.current().params._id;
-                        gamePlayer.player_id = playerId;
-                        gamePlayer.score = 1500;
-                        GamePlayers.insert(gamePlayer);
-                    }
-                });
+                player._id = Players.insert(player);
+                toastr.success('new player joined');
             }
         });
     },

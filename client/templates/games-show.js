@@ -51,7 +51,7 @@ Template.gamesShow.helpers({
 });
 
 Template.gamesShow.events({
-    'click .AddPlayerToGame': function(event) {
+    'click .addPlayerToGame': function(event) {
         event.preventDefault();
         Session.set(SHOW_ADD_PLAYER_KEY, true);
     }
