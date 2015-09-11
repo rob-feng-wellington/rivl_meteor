@@ -12,14 +12,19 @@ Template.playerCollapseArea.helpers({
 
 Template.playerCollapseArea.events({
     'click .thumbnail': function(ev) {
-        var gamePlayer = {};
-        gamePlayer.player = $(ev.currentTarget).data('id');
-        gamePlayer.game = Router.current().params._id;
+
+        var playerId = $(ev.currentTarget).data('id');
+        var gameId = Router.current().params._id;
         var playerName = $(ev.currentTarget).data('playerName');
 
         // todo: fix this!!
-        Meteor.call();
-        gamePlayer._id = GamePlayers.insert(gamePlayer);
+        Meteor.call('createGamePlayer', gameId, playerId, function(error, result){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(result);
+            }
+        });
         toastr.success('joined game');
     }
 });
