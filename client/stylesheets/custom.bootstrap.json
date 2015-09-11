@@ -7,7 +7,7 @@
     "scaffolding"          : false,
     "type"                 : false,
     "code"                 : false,
-    "grid"                 : false,
+    "grid"                 : true,
     "tables"               : false,
     "forms"                : false,
     "buttons"              : false,
@@ -25,13 +25,13 @@
 
     "badges"               : false,
     "jumbotron"            : false,
-    "thumbnails"           : false,
+    "thumbnails"           : true,
     "alerts"               : false,
     "progress-bars"        : false,
-    "media"                : false,
+    "media"                : true,
     "list-group"           : false,
     "panels"               : false,
-    "responsive-embed"     : false,
+    "responsive-embed"     : true,
     "wells"                : false,
     "close"                : false,
 
@@ -48,7 +48,7 @@
     "tab"                  : false,
     "transition"           : true,
 
-    "utilities"            : false,
-    "responsive-utilities" : false
+    "utilities"            : true,
+    "responsive-utilities" : true
   }
 }

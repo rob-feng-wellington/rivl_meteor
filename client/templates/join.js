@@ -20,7 +20,6 @@ Template.join.events({
             else {
                 player.name = templateInstance.$('input[name="name"]').val();
                 player.avatar = fileObj._id;
-                console.dir(player);
 
                 player._id = Players.insert(player);
                 toastr.success('new player joined');

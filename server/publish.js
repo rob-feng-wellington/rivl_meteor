@@ -47,9 +47,6 @@ Meteor.publishComposite('allPlayers', {
     children: [
         {
             find: function(player) {
-                console.log(Images.find(
-                    {_id: player.avatar}
-                ).fetch());
                 return Images.find(
                     {_id: player.avatar}
                 );
