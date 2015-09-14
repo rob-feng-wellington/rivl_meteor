@@ -34,12 +34,16 @@ Template.gamesShow.onRendered(function(){
 
 Template.gamesShow.helpers({
     playerListReady: function() {
-        return true;
-        //return Router.current().playersListandle.ready();
+        return Router.current().playersListandle.ready();
     },
 
     players: function() {
-        return Games.find({_id: Router.current().params._id}).players;
+        var game = Games.findOne({_id:  Router.current().params._id});
+        var gameIds = _.map(game.players, function(player){
+            return player._id;
+        });
+        console.log(Players.find({_id: {$in: gameIds}}));
+        return Players.find({_id: {$in: gameIds}});
     },
 
     addPlayerFormOpen: function() {
@@ -47,8 +51,8 @@ Template.gamesShow.helpers({
     },
 
     hasOneOrMorePlayers: function() {
-        console.log(Games.findOne({_id: Router.current().params._id}).players.length);
-        return Games.findOne({_id: Router.current().params._id}).players.length > 0;
+        var game = Games.findOne({_id: Router.current().params._id});
+        return game.players.length > 0;
     }
 });
 

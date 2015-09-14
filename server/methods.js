@@ -1,5 +1,5 @@
 Meteor.methods({
-    createGamePlayer: function(gameId, playerId) {
+/*    createGamePlayer: function(gameId, playerId) {
         check(playerId, String);
         check(gameId, String);
 
@@ -14,5 +14,5 @@ Meteor.methods({
                 players: gamePlayer
             }
         });
-    }
+    }*/
 });

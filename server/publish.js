@@ -2,11 +2,11 @@ Meteor.publish('games', function(){
     return Games.find({});
 });
 
-Meteor.publishComposite('playersForGame', function(gameId){
+Meteor.publishComposite('getGameDetails', function(gameId){
     check(gameId, String);
     return {
         find: function() {
-            return Games.find({_id:gameId}).players;
+            return Games.findOne({_id:gameId});
         },
 
         children: [
@@ -42,8 +42,16 @@ Meteor.publishComposite('playersForGame', function(gameId){
     }
 );*/
 
-Meteor.publish('players', function(playersList){
-    return Players.find({_id: {$in: playersList}});
+Meteor.publish('playerList', function(gameId){
+    check(gameId, String);
+    var game = Games.findOne({_id: gameId});
+    if(game) {
+        var gameIds = _.map(game.players, function(player){
+            return player._id
+        });
+        return Players.find({_id: {$in: gameIds}});
+    }
+
 });
 
 Meteor.publishComposite('allPlayers', {

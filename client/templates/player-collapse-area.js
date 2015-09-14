@@ -18,21 +18,17 @@ Template.playerCollapseArea.events({
         var playerName = $(ev.currentTarget).data('playerName');
 
         var player = Players.findOne({_id: playerId});
+
         var gamePlayer = {};
         gamePlayer.player = player;
         gamePlayer.score = 50;
-        console.log(gamePlayer);
 
-        Games.update(gameId, {$push: gamePlayer}, {validate: false});
+        Games.update(
+            {_id : gameId },
+            { $addToSet: {players: gamePlayer} },
+            {validate: false}
+        );
 
-        // todo: fix this!!
-        /*Meteor.call('createGamePlayer', gameId, playerId, function(error, result){
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(result);
-            }
-        });*/
-        toastr.success('joined game');
+        toastr.success(playerName + ' joined game');
     }
 });
