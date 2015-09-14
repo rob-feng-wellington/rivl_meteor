@@ -56,7 +56,7 @@ Template.appBody.helpers({
     },
 
     gamePlayersCount : function() {
-        return GamePlayers.find({game_id: this._id}).count();
+        return Games.findOne({_id: this._id}).players.length;
     },
 
     connected: function() {

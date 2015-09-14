@@ -18,7 +18,8 @@ Meteor.startup(function() {
         _.each(games, function(game){
             Games.insert({
                 title: game.title,
-                createdAt: new Date(timeStamp)
+                createdAt: new Date(timeStamp),
+                players: []
             });
             timeStamp += 1;
         });

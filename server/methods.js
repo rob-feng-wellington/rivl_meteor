@@ -3,17 +3,16 @@ Meteor.methods({
         check(playerId, String);
         check(gameId, String);
 
-        var player = Players.findOne({_id:playerId}),
-            game = Games.findOne({_id:gameId});
-        console.log(player);
-        console.log(game);
+        var player = Players.findOne({_id: playerId});
+
         var gamePlayer = {};
-        gamePlayer.game = game;
         gamePlayer.player = player;
-
-        gamePlayer._id = GamePlayers.insert(gamePlayer);
-
-        return gamePlayer;
-
+        gamePlayer.score = 50;
+        console.log()
+        return Games.update(gameId ,{
+            $push: {
+                players: gamePlayer
+            }
+        });
     }
 });

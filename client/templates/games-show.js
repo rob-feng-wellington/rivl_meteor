@@ -34,11 +34,12 @@ Template.gamesShow.onRendered(function(){
 
 Template.gamesShow.helpers({
     playerListReady: function() {
-        return Router.current().playersListandle.ready();
+        return true;
+        //return Router.current().playersListandle.ready();
     },
 
     players: function() {
-        return GamePlayers.find({game_id: Router.current().params._id});
+        return Games.find({_id: Router.current().params._id}).players;
     },
 
     addPlayerFormOpen: function() {
@@ -46,7 +47,8 @@ Template.gamesShow.helpers({
     },
 
     hasOneOrMorePlayers: function() {
-        return GamePlayers.find({game_id: Router.current().params._id}).count > 0;
+        console.log(Games.findOne({_id: Router.current().params._id}).players.length);
+        return Games.findOne({_id: Router.current().params._id}).players.length > 0;
     }
 });
 
