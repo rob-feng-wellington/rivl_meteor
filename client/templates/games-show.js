@@ -34,16 +34,13 @@ Template.gamesShow.onRendered(function(){
 
 Template.gamesShow.helpers({
     playerListReady: function() {
-        return Router.current().playersListandle.ready();
+        return Router.current().playersListHandle.ready()
+            && Router.current().allPlayersHandle.ready();
     },
 
     players: function() {
         var game = Games.findOne({_id:  Router.current().params._id});
-        var gameIds = _.map(game.players, function(player){
-            return player._id;
-        });
-        console.log(Players.find({_id: {$in: gameIds}}));
-        return Players.find({_id: {$in: gameIds}});
+        return game.players;
     },
 
     addPlayerFormOpen: function() {

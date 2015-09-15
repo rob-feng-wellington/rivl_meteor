@@ -3,17 +3,15 @@
         <div class="content-scrollable players-items">
             {{#if playerListReady}}
                 {{#if hasOneOrMorePlayers}}
-                    <div>asasassasa</div>
                     {{#each players}}
                         {{> player}}
-                    {{else}}
-                        <div class="wrapper-message">
+                    {{/each}}
+                {{else}}
+                    <div class="wrapper-message">
                         <div class="title-message">No players yet......</div>
                         <a class="btn btn-primary" role="button" data-toggle="collapse" href="#playersCollapse" aria-expanded="false" aria-controls="playersCollapse">Add the first player</a>
-
                         {{> playerCollapseArea}}
                     </div>
-                    {{/each}}
                 {{/if}}
 
             {{else}}

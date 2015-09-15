@@ -47,9 +47,10 @@ Meteor.publish('playerList', function(gameId){
     var game = Games.findOne({_id: gameId});
     if(game) {
         var gameIds = _.map(game.players, function(player){
-            return player._id
+            return player.player._id
         });
-        return Players.find({_id: {$in: gameIds}});
+        var players = Players.find({_id: {$in: gameIds}});
+        return players
     }
 
 });

@@ -1,5 +1,3 @@
-Meteor.subscribe('allPlayers');
-
 Template.playerCollapseArea.helpers({
     allPlayers: function(){
         return Players.find({});
